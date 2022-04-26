@@ -8,8 +8,8 @@ import java.util.List;
 
 public interface i_daoProduct
 {
-    public List<Product> getProductsforLandingpage();
-    public Product getProductById(long productId);
-    public List<Product> searchProductovertextfield(String searchProduct, Pageable pageable);
-    public List<Product> searchProductop25(String searchProduct);
+    List<Product> getProductsforLandingpage();
+    Product getProductById(long productId);
+    List<Product> searchProductovertextfield(String searchProduct, Pageable pageable);
+    List<Product> searchProductop25(String searchProduct);
 }

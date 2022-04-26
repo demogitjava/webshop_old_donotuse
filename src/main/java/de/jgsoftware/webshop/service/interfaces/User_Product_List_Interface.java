@@ -1,18 +1,19 @@
 package de.jgsoftware.webshop.service.interfaces;
 
-import de.jgsoftware.webshop.dao.Doa_UserProductList;
+
 import de.jgsoftware.webshop.service.User_Product_List_Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.LinkedCaseInsensitiveMap;
 
+import de.jgsoftware.webshop.dao.Dao_UserProductList;
 import java.util.List;
 
 public interface User_Product_List_Interface
 {
 
-    public Doa_UserProductList getDoaUserProductList();
-    public void setDoaUserProductList(Doa_UserProductList doaUserProductList);
+    Dao_UserProductListt getDoaUserProductList();
+    void setDoaUserProductList(Dao_UserProductList doaUserProductList);
 
-    public double priceshoppingchart(Double shoppingpriceitem, List productswithtextandprice);
-    public Double getUSTChart(double shoppingpriceitem);
+    double priceshoppingchart(Double shoppingpriceitem, List productswithtextandprice);
+    Double getUSTChart(double shoppingpriceitem);
 }

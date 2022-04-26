@@ -78,6 +78,7 @@ public class ProfileController
 
 
         String stusername = principal.getName();
+        //List userlistid = user_product_list_service.getDoaUserProductList().getUserId(stusername);
         List userlistid = user_product_list_service.getDoaUserProductList().getUserId(stusername);
 
         Users usermodel = new Users();

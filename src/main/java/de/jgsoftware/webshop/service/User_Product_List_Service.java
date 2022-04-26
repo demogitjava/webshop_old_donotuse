@@ -1,7 +1,8 @@
 package de.jgsoftware.webshop.service;
 
 
-import de.jgsoftware.webshop.dao.Doa_UserProductList;
+import de.jgsoftware.webshop.dao.Dao_UserProductList;
+
 import de.jgsoftware.webshop.model.Product;
 import de.jgsoftware.webshop.service.interfaces.User_Product_List_Interface;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,13 +20,13 @@ public class User_Product_List_Service implements User_Product_List_Interface
 {
 
     @Autowired
-    de.jgsoftware.webshop.dao.Doa_UserProductList doaUserProductList;
+    de.jgsoftware.webshop.dao.Dao_UserProductList doaUserProductList;
 
-    public Doa_UserProductList getDoaUserProductList() {
+    public Dao_UserProductList getDaoUserProductList() {
         return doaUserProductList;
     }
 
-    public void setDoaUserProductList(Doa_UserProductList doaUserProductList) {
+    public void setDoaUserProductList(Dao_UserProductList daoUserProductList) {
         this.doaUserProductList = doaUserProductList;
     }
 
