@@ -11,14 +11,16 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 
+import de.jgsoftware.webshop.controller.interfaces.iTR_Controller;
+
 @Controller
-@RequestMapping("/tr")
-public class TR_IndexController
+
+public class TR_IndexController implements iTR_Controller
 {
 
     // TR Türkey
-    @GetMapping({"tr", "/"})
-    public ModelAndView index()
+    @Override
+    public ModelAndView tr()
     {
         Map<String, Object> prodtlists = new HashMap<>();
 
