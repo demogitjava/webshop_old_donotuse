@@ -10,15 +10,16 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
+import de.jgsoftware.webshop.controller.interfaces.iES_IndexController;
 
 @Controller
-@RequestMapping("/es")
-public class ES_IndexController
+
+public class ES_IndexController implements iES_IndexController
 {
 
     // ES Spanisch
-    @GetMapping({"es", "/"})
-    public ModelAndView index()
+    @Override
+    public ModelAndView es()
     {
         Map<String, Object> prodtlists = new HashMap<>();
 
