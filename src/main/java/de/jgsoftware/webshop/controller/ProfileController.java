@@ -79,16 +79,16 @@ public class ProfileController
 
         String stusername = principal.getName();
         //List userlistid = user_product_list_service.getDoaUserProductList().getUserId(stusername);
-        List userlistid = user_product_list_service.getDoaUserProductList().getUserId(stusername);
+        List userlistid = user_product_list_service.getDaoUserProductList().getUserId(stusername);
 
         Users usermodel = new Users();
         usermodel = (Users) userlistid.get(0);
 
         Long userid = usermodel.getId();
 
-        user_product_list_service.getDoaUserProductList().saveuserdata(productId, userid);
+        user_product_list_service.getDaoUserProductList().saveuserdata(productId, userid);
 
-        //return indexcontroller.index(model);
+
         return "redirect:/";
     }
 
@@ -104,7 +104,7 @@ public class ProfileController
                 over email from loginsession
          */
         String stemail = principal.getName();
-        List<Kundenstamm> kdstamm = user_product_list_service.getDoaUserProductList().getCustomerdataoveremail(stemail);
+        List<Kundenstamm> kdstamm = user_product_list_service.getDaoUserProductList().getCustomerdataoveremail(stemail);
         /*
                 userdata from table Kundenstamm over
                 email address query
@@ -123,10 +123,10 @@ public class ProfileController
 
          */
         Integer kundennummer_id = (Integer) kdstamm.get(0).getId();
-        prodtlists.put("kstammdata", user_product_list_service.getDoaUserProductList().getCheckoutdata(kundennummer_id));
+        prodtlists.put("kstammdata", user_product_list_service.getDaoUserProductList().getCheckoutdata(kundennummer_id));
 
 
-        List productswithtextandprice = (ArrayList) user_product_list_service.getDoaUserProductList().getCustomercheckoutproductswithprice(kundennummer_id);
+        List productswithtextandprice = (ArrayList) user_product_list_service.getDaoUserProductList().getCustomercheckoutproductswithprice(kundennummer_id);
         prodtlists.put("productswithtext", productswithtextandprice);
 
 
@@ -184,7 +184,7 @@ public class ProfileController
                 over email from loginsession
          */
         String stemail = principal.getName();
-        List<Kundenstamm> kdstamm = user_product_list_service.getDoaUserProductList().getCustomerdataoveremail(stemail);
+        List<Kundenstamm> kdstamm = user_product_list_service.getDaoUserProductList().getCustomerdataoveremail(stemail);
         /*
                 userdata from table Kundenstamm over
                 email address query
@@ -203,10 +203,10 @@ public class ProfileController
 
          */
         Integer kundennummer_id = (Integer) kdstamm.get(0).getId();
-        prodtlists.put("kstammdata", user_product_list_service.getDoaUserProductList().getCheckoutdata(kundennummer_id));
+        prodtlists.put("kstammdata", user_product_list_service.getDaoUserProductList().getCheckoutdata(kundennummer_id));
 
 
-        List productswithtextandprice = (ArrayList) user_product_list_service.getDoaUserProductList().getCustomercheckoutproductswithprice(kundennummer_id);
+        List productswithtextandprice = (ArrayList) user_product_list_service.getDaoUserProductList().getCustomercheckoutproductswithprice(kundennummer_id);
 
         prodtlists.put("productswithtext", productswithtextandprice);
 

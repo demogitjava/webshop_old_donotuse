@@ -3,31 +3,28 @@ package de.jgsoftware.webshop.service;
 
 import de.jgsoftware.webshop.dao.Dao_UserProductList;
 
-import de.jgsoftware.webshop.model.Product;
 import de.jgsoftware.webshop.service.interfaces.User_Product_List_Interface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.LinkedCaseInsensitiveMap;
-import org.springframework.util.StringUtils;
 
-import javax.swing.*;
 import java.util.*;
-import java.util.Set;
-import java.util.Iterator;
 
 @Service
 public class User_Product_List_Service implements User_Product_List_Interface
 {
 
     @Autowired
-    de.jgsoftware.webshop.dao.Dao_UserProductList doaUserProductList;
+    de.jgsoftware.webshop.dao.Dao_UserProductList daoUserProductList;
 
+
+    @Override
     public Dao_UserProductList getDaoUserProductList() {
-        return doaUserProductList;
+        return daoUserProductList;
     }
 
     public void setDoaUserProductList(Dao_UserProductList daoUserProductList) {
-        this.doaUserProductList = doaUserProductList;
+        this.daoUserProductList = daoUserProductList;
     }
 
     public double priceshoppingchart(Double shoppingpriceitem, List productswithtextandprice)

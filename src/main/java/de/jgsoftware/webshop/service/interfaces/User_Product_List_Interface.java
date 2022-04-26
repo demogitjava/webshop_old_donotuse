@@ -11,8 +11,9 @@ import java.util.List;
 public interface User_Product_List_Interface
 {
 
-    Dao_UserProductListt getDoaUserProductList();
-    void setDoaUserProductList(Dao_UserProductList doaUserProductList);
+    Dao_UserProductList getDaoUserProductList();
+
+    void setDoaUserProductList(Dao_UserProductList daoUserProductList);
 
     double priceshoppingchart(Double shoppingpriceitem, List productswithtextandprice);
     Double getUSTChart(double shoppingpriceitem);
