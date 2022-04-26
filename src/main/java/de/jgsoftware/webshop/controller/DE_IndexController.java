@@ -178,7 +178,8 @@ public class DE_IndexController
 
     @GetMapping(value = "pagination")
     public ModelAndView getEmployees(@RequestParam(value = "page", required = false) Integer page,
-                                     Pageable pageable, Device device) {
+                                     Pageable pageable, Device device)
+    {
 
         lang = (String) request.getLocale().getLanguage();
 
@@ -214,7 +215,8 @@ public class DE_IndexController
 
     @GetMapping(value = "nextpage")
     public ModelAndView getnextpage(@RequestParam(value = "page", required = false) Integer page,
-                                    Pageable pageable, Device device) {
+                                    Pageable pageable, Device device)
+    {
 
         page = page + 1;
         lang = (String) request.getLocale().getLanguage();
@@ -250,7 +252,8 @@ public class DE_IndexController
 
     @GetMapping(value = "previous")
     public ModelAndView setprevious(@RequestParam(value = "page", required = false) Integer page,
-                                    Pageable pageable, Device device) {
+                                    Pageable pageable, Device device)
+    {
 
         page = page - 1;
         lang = (String) request.getLocale().getLanguage();
