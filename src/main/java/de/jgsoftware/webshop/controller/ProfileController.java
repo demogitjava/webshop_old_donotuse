@@ -34,9 +34,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.web.servlet.ModelAndView;
 
+import de.jgsoftware.webshop.controller.interfaces.i_ProfileController;
+
 @Controller
-@RequestMapping("profile")
-public class ProfileController
+public class ProfileController implements i_ProfileController
 {
 
 
@@ -72,7 +73,7 @@ public class ProfileController
 
 
 
-    @GetMapping("addToCart/{productId}")
+    @Override
     public String addToCart(@PathVariable("productId") String productId, Principal principal, Model model)
     {
 
@@ -94,7 +95,7 @@ public class ProfileController
 
 
 
-    @GetMapping({"cart-product", "/"})
+    @Override
     public ModelAndView index(Principal principal)
     {
         Map<String, Object> prodtlists = new HashMap<>();
@@ -158,7 +159,7 @@ public class ProfileController
         return new ModelAndView("/profile/cart-product.html", prodtlists);
     }
 
-    @PostMapping("updatechart")
+    @Override
     public ModelAndView updatechart(@RequestParam(value = "updatechart", required = false) String updatechart, Integer id, Integer shoppingpriceitem, Principal principal) {
 
 
