@@ -9,15 +9,15 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
+import de.jgsoftware.webshop.controller.interfaces.iFR_IndexController;
 
 @Controller
-@RequestMapping("/fr")
-public class FR_IndexController
+public class FR_IndexController implements iFR_IndexController
 {
 
     // FR French
-    @GetMapping({"fr", "/"})
-    public ModelAndView index()
+    @Override
+    public ModelAndView fr()
     {
 
 
