@@ -10,18 +10,18 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
+import de.jgsoftware.webshop.controller.interfaces.iIT_IndexController;
 
 @Controller
-@RequestMapping("/it")
-public class IT_IndexController
+public class IT_IndexController implements iIT_IndexController
 {
 
     private Locale locale;
 
 
     // IT Italy
-    @GetMapping({"it", "/"})
-    public ModelAndView index()
+    @Override
+    public ModelAndView it()
     {
         Map<String, Object> prodtlists = new HashMap<>();
 
