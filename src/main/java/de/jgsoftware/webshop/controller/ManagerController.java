@@ -11,14 +11,15 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 
+import de.jgsoftware.webshop.controller.interfaces.i_ManagerController;
 @Controller
 @RequestMapping("/manager/")
-public class ManagerController
+public class ManagerController implements i_ManagerController
 {
 
 
-    @GetMapping({"manager", "/"})
-    public ModelAndView index()
+    @Override
+    public ModelAndView mcontroller()
     {
         Map<String, Object> prodtlists = new HashMap<>();
 
