@@ -25,9 +25,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import de.jgsoftware.webshop.controller.interfaces.iDE_IndexController;
+
 @Controller
-@RequestMapping("/")
-public class DE_IndexController
+public class DE_IndexController implements iDE_IndexController
 {
 
 
@@ -59,7 +60,7 @@ public class DE_IndexController
 
 
     // DE German
-    @GetMapping({"de", "/"})
+    @Override
     public ModelAndView index(Device device)
     {
         //Locale locale = (Locale) WebUtils.getSessionAttribute(request, LOCALE_SESSION_ATTRIBUTE_NAME);
@@ -88,7 +89,7 @@ public class DE_IndexController
 
 
 
-    @GetMapping("login")
+    @Override
     public String login()
     {
 
@@ -96,7 +97,7 @@ public class DE_IndexController
     }
 
 
-    @PostMapping("addProcducttocase")
+    @Override
     public ModelAndView getProduct()
     {
         mv = new ModelAndView("index");
@@ -108,43 +109,43 @@ public class DE_IndexController
             loading supported language from browser
 
      */
-    @RequestMapping("fr")
+    @Override
     public String pagefr() {
         return "/fr/index";
     }
 
-    @RequestMapping("en")
+    @Override
     public String pageen() {
         return "/en/index";
     }
 
-    @RequestMapping("it")
+    @Override
     public String pageit() {
         return "/it/index";
     }
 
-    @RequestMapping("tk")
+    @Override
     public String pagetk() {
         return "/tk/index";
     }
 
-    @RequestMapping("es")
+    @Override
     public String pagees() {
         return "/es/index";
     }
 
-    @RequestMapping("admin")
+    @Override
     public String pageadmin() {
         return "/admin/index";
     }
 
-    @RequestMapping("manager")
+    @Override
     public String pagemanager() {
         return "/manager/index";
     }
 
 
-    @PostMapping("searchProduct")
+    @Override
     public ModelAndView searchProduct(@RequestParam(value = "searchProduct", required = false) String searchProduct, Pageable pageable, Device device)
     {
         lang = (String) request.getLocale().getLanguage();
@@ -176,7 +177,7 @@ public class DE_IndexController
     }
 
 
-    @GetMapping(value = "pagination")
+    @Override
     public ModelAndView getEmployees(@RequestParam(value = "page", required = false) Integer page,
                                      Pageable pageable, Device device)
     {
@@ -213,7 +214,7 @@ public class DE_IndexController
 
     }
 
-    @GetMapping(value = "nextpage")
+    @Override
     public ModelAndView getnextpage(@RequestParam(value = "page", required = false) Integer page,
                                     Pageable pageable, Device device)
     {
@@ -250,7 +251,7 @@ public class DE_IndexController
     }
 
 
-    @GetMapping(value = "previous")
+    @Override
     public ModelAndView setprevious(@RequestParam(value = "page", required = false) Integer page,
                                     Pageable pageable, Device device)
     {
