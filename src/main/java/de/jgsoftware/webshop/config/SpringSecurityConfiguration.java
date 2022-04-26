@@ -1,2 +1,100 @@
-package de.jgsoftware.webshop.config;public class SpringSecurityConfiguration {
+package de.jgsoftware.webshop.config;
+
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import javax.sql.DataSource;
+
+import org.springframework.web.servlet.LocaleResolver;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.i18n.*;
+
+import java.util.Locale;
+
+@Configuration
+@EnableWebSecurity
+public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter{
+
+
+
+    @Autowired
+    org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder passwordEncoder;
+
+    @Autowired
+    private DataSource dataSource;
+
+    @Autowired
+    public void configAuthentication(AuthenticationManagerBuilder authBuilder) throws Exception {
+        authBuilder.jdbcAuthentication()
+                .dataSource(dataSource)
+                .passwordEncoder(new org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder())
+                .authoritiesByUsernameQuery("select username, role from users where username=?")
+                .usersByUsernameQuery("select username, password, enabled from users where username=?")
+
+        ;
+    }
+
+    @Bean
+    public BCryptPasswordEncoder passwordEncoder(){
+        return new BCryptPasswordEncoder();
+    }
+
+
+
+    @Override
+    protected void configure(HttpSecurity http) throws Exception
+    {
+        http
+                .authorizeRequests()
+                .antMatchers(
+                        "/index.html",
+                        "/signup.html",
+                        "/login.html",
+                        "/resources/**",
+                        "/h2/**",
+                        "/templates/imgproducts/**",
+                        "/static/**,").permitAll()
+
+                .antMatchers("/profile/**").access("hasRole('ROLE_USER')")
+                .antMatchers("/admin/**").access("hasRole('ROLE_ADMIN')")
+                .antMatchers("/manager/**").access("hasRole('ROLE_MANAGER')")
+                .and()
+                .formLogin()
+                .loginPage("/login")
+                .usernameParameter("email")
+                .passwordParameter("password")
+                .and()
+                .logout()
+                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                .logoutSuccessUrl("/login")
+                .and()
+                //.rememberMe().tokenValiditySeconds(30000).key("keytoken!")
+                //.rememberMeParameter("checkRememberMe");
+                .rememberMe().disable();
+
+        http.authorizeRequests().antMatchers("/h2/**").permitAll()
+                .and().csrf().ignoringAntMatchers("/h2/**")
+                .and().headers().frameOptions().sameOrigin();
+
+
+
+    }
+
+
+
+
+
+
+
+
+
 }
