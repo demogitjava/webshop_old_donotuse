@@ -27,6 +27,7 @@ public class User_Product_List_Service implements User_Product_List_Interface
         this.daoUserProductList = daoUserProductList;
     }
 
+    @Override
     public double priceshoppingchart(Double shoppingpriceitem, List productswithtextandprice)
     {
         double shopinngprice = 0.00;
@@ -68,6 +69,7 @@ public class User_Product_List_Service implements User_Product_List_Interface
     }
 
 
+    @Override
     public Double getUSTChart(double dobletotal)
     {
 
