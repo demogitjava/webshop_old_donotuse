@@ -1,7 +1,9 @@
 package de.jgsoftware.webshop.config;
 
 
+
 import com.zaxxer.hikari.HikariConfig;
+import org.h2.tools.Server;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -18,18 +20,19 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
+import java.sql.SQLException;
 import java.util.HashMap;
 
 @Configuration
 @EnableTransactionManagement
-@EnableJpaRepositories(basePackages = "de.jgsoftware.webshop.dao.interfaces",
+@EnableJpaRepositories(basePackages = "de.jgsoftware.landingpage.dao.interfaces.web",
         entityManagerFactoryRef = "shopEntityManagerFactory",
         transactionManagerRef = "shopTransactionManager")
 public class ShopDBConfig extends HikariConfig
 {
     @Autowired
     @Qualifier(value = "shopJdbcTemplate")
-    JdbcTemplate jtm;
+    JdbcTemplate jtm2;
 
 
     @Autowired
@@ -39,7 +42,21 @@ public class ShopDBConfig extends HikariConfig
 
     public ShopDBConfig()
     {
+        try
+        {
+            Server h2Server = Server.createTcpServer().start();
+            if (h2Server.isRunning(true))
+            {
+                System.out.print("H2 server was started and is running." + "\n");
+            } else
+            {
 
+                h2Server = Server.createWebServer().start();
+                throw new RuntimeException("Could not start H2 server." + "\n");
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException("Failed to start H2 server: " + e + "\n");
+        }
     }
 
 
@@ -54,19 +71,19 @@ public class ShopDBConfig extends HikariConfig
 
 
     @Bean(name = "shopEntityManagerFactory")
-    public LocalContainerEntityManagerFactoryBean shopEntityManagerFactory(EntityManagerFactoryBuilder builder,
+    public LocalContainerEntityManagerFactoryBean mawiEntityManagerFactory(EntityManagerFactoryBuilder builder,
                                                                            @Qualifier("shopdb") DataSource dataSource1) {
         HashMap<String, Object> properties = new HashMap<>();
 
         properties.put("hibernate.dialect", "org.hibernate.dialect.H2Dialect");
         return builder.dataSource(dataSource1).properties(properties)
-                .packages("de.jgsoftware.webshop.model").persistenceUnit("Shop").build();
+                .packages("de.jgsoftware.landingpage.model").persistenceUnit("Shop").build();
     }
 
     @Bean(name = "shopTransactionManager")
-    public PlatformTransactionManager shopTransactionManager(
-            @Qualifier("shopEntityManagerFactory") EntityManagerFactory shopEntityManagerFactory) {
-        return new JpaTransactionManager(shopEntityManagerFactory);
+    public PlatformTransactionManager mawiTransactionManager(
+            @Qualifier("shopEntityManagerFactory") EntityManagerFactory mawiEntityManagerFactory) {
+        return new JpaTransactionManager(mawiEntityManagerFactory);
     }
 
     @Bean(name = "shopJdbcTemplate")
