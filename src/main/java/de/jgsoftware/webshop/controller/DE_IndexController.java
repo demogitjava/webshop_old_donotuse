@@ -2,10 +2,7 @@ package de.jgsoftware.webshop.controller;
 
 
 import de.jgsoftware.webshop.model.Product;
-import de.jgsoftware.webshop.service.Index_Service;
 
-import de.jgsoftware.webshop.service.User_Service;
-import de.jgsoftware.webshop.service.Product_Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.support.PagedListHolder;
 import org.springframework.data.domain.*;
@@ -28,19 +25,25 @@ import java.util.Map;
 
 import de.jgsoftware.webshop.controller.interfaces.iDE_IndexController;
 
+import de.jgsoftware.webshop.service.interfaces.I_Index_Service;
+import de.jgsoftware.webshop.service.interfaces.i_User_Service;
+import de.jgsoftware.webshop.service.interfaces.i_Product_Service;
+
+
+
 @Controller
 public class DE_IndexController implements iDE_IndexController
 {
 
 
     @Autowired
-    Index_Service indexservice;
+    I_Index_Service indexservice;
 
     @Autowired
-    User_Service userService;
+    i_User_Service userService;
 
     @Autowired
-    Product_Service pservice;
+    i_Product_Service pservice;
 
 
     Pageable pageable;
