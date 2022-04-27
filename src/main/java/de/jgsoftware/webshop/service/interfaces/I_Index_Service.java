@@ -1,5 +1,7 @@
 package de.jgsoftware.webshop.service.interfaces;
 
+import de.jgsoftware.webshop.dao.DaoIndex;
+import de.jgsoftware.webshop.dao.DaoProduct;
 import de.jgsoftware.webshop.model.Product;
 import org.springframework.beans.support.PagedListHolder;
 import org.springframework.data.domain.Page;
@@ -11,8 +13,15 @@ import java.util.List;
 
 public interface I_Index_Service
 {
-    public Integer getdefaultSize(List<Product> productList);
-    public PagedListHolder getpageList(List<Product> productList);
-    public List<Product> getpageSublist(List<Product> productList, int page);
+    DaoProduct getDaoProduct();
+    void setDaoProduct(DaoProduct daoProduct);
+    DaoIndex getDaoindex();
+    void setDaoindex(DaoIndex daoindex);
+
+    DaoIndex getDaoIndex();
+    Integer getdefaultSize(List<Product> productList);
+
+    PagedListHolder getpageList(List<Product> productList);
+    List<Product> getpageSublist(List<Product> productList, int page);
 
 }

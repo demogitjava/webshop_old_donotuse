@@ -31,22 +31,28 @@ public class Index_Service implements I_Index_Service
     public Pageable pageable;
 
 
+    @Override
     public DaoProduct getDaoProduct() {
         return daoProduct;
     }
 
+    @Override
     public void setDaoProduct(DaoProduct daoProduct) {
         this.daoProduct = daoProduct;
     }
 
+    @Override
     public DaoIndex getDaoindex() {
         return daoindex;
     }
 
+    @Override
     public void setDaoindex(DaoIndex daoindex) {
         this.daoindex = daoindex;
     }
 
+
+    @Override
     public DaoIndex getDaoIndex()
     {
 
@@ -55,6 +61,7 @@ public class Index_Service implements I_Index_Service
     }
 
 
+    @Override
     public Integer getdefaultSize(List<Product> productList)
     {
         listsize = productList.size() /10;
@@ -70,6 +77,7 @@ public class Index_Service implements I_Index_Service
 
 
 
+    @Override
     public PagedListHolder getpageList(List<Product> productList)
     {
         PagedListHolder pagelist = new PagedListHolder(productList);
@@ -81,7 +89,8 @@ public class Index_Service implements I_Index_Service
     }
 
 
-    // pagesize is set to 10
+
+    @Override
     public List<Product> getpageSublist(List<Product> productList, int page)
     {
 
