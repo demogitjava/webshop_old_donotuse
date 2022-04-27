@@ -17,9 +17,10 @@ import javax.persistence.PersistenceContext;
 import java.util.List;
 import java.util.Map;
 
+import de.jgsoftware.webshop.dao.interfaces.i_dao_userproductlist;
 
 @Repository
-public class Dao_UserProductList
+public class Dao_UserProductList implements i_dao_userproductlist
 {
 
 
@@ -34,6 +35,7 @@ public class Dao_UserProductList
 
 
     // insert record
+    @Override
     public USER_PRODUCT_LIST saveEntrytoDatabase(USER_PRODUCT_LIST user_product_list)
     {
 
@@ -47,6 +49,7 @@ public class Dao_UserProductList
         return user_product_list;
     }
 
+    @Override
     public String saveuserdata(String productId, Long userid)
     {
 
@@ -66,6 +69,7 @@ public class Dao_UserProductList
     }
 
 
+    @Override
     public List getUserId(String stusername)
     {
 
@@ -74,12 +78,14 @@ public class Dao_UserProductList
         return userlistid;
     }
 
+    @Override
     public List getUserdataafterLogin(String stusername)
     {
         List userlistid = jtm.query("select * from users where username like " + "'" + stusername + "'", new BeanPropertyRowMapper(Users.class));
         return userlistid;
     }
 
+    @Override
     public List getCustomerdataoveremail(String stemail)
     {
         List customeroveremail = jtm.query("select * from kundenstamm where email like " + "'" + stemail + "'", new BeanPropertyRowMapper(Kundenstamm.class));
@@ -87,6 +93,8 @@ public class Dao_UserProductList
         return customeroveremail;
     }
 
+
+    @Override
     public List getCheckoutdata(Integer id_kundernumber)
     {
 
@@ -108,6 +116,7 @@ public class Dao_UserProductList
     }
 
 
+    @Override
     public List getCustomercheckoutproductswithprice(Integer id_kundernumber)
     {
 

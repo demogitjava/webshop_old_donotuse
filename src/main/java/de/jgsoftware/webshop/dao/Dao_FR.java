@@ -6,19 +6,15 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-
+import de.jgsoftware.webshop.dao.interfaces.i_daofr;
 
 @Repository
-public class Dao_FR
+public class Dao_FR implements i_daofr
 {
 
     @Autowired
     private JdbcTemplate jtm;
 
-    public Dao_FR()
-    {
-
-    }
 
 
 
