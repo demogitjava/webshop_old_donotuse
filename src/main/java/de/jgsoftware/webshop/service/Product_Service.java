@@ -8,11 +8,11 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import de.jgsoftware.webshop.dao.DaoProduct;
-
+import de.jgsoftware.webshop.service.interfaces.i_Product_Service;
 import java.util.List;
 
 @Service
-public class Product_Service
+public class Product_Service implements i_Product_Service
 {
 
     @Autowired
