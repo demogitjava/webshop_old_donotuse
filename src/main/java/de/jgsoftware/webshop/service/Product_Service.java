@@ -22,10 +22,13 @@ public class Product_Service implements i_Product_Service
 
 
 
+    @Override
     public DaoProduct getDaoProduct() {
         return daoProduct;
     }
 
+
+    @Override
     public void setDaoProduct(DaoProduct daoProduct) {
         this.daoProduct = daoProduct;
     }
