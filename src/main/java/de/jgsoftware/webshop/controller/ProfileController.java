@@ -50,23 +50,16 @@ public class ProfileController implements i_ProfileController
     Double shoppingpriceitem = Double.valueOf(1.00);
     Double ustproductchart = null;
 
-
     @Autowired
     i_Product_Service product_service;
-
 
     @Autowired
     User_Product_List_Interface user_product_list_service;
 
-
     private  ViewControllerRegistry registry;
-
 
     @Autowired
     I_Index_Service indexservice;
-
-
-
 
     @Override
     public String addToCart(@PathVariable("productId") String productId, Principal principal, Model model)
@@ -87,9 +80,6 @@ public class ProfileController implements i_ProfileController
 
         return "redirect:/";
     }
-
-
-
     @Override
     public ModelAndView index(Principal principal)
     {
@@ -230,8 +220,5 @@ public class ProfileController implements i_ProfileController
         return new ModelAndView("/profile/cart-product.html", prodtlists);
 
     }
-
-
-
 
 }
