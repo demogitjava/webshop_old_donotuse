@@ -29,7 +29,7 @@ public class ShopDBConfig extends HikariConfig
 {
     @Autowired
     @Qualifier(value = "shopJdbcTemplate")
-    JdbcTemplate jtm2;
+    JdbcTemplate jtm;
 
 
     @Autowired
@@ -54,7 +54,7 @@ public class ShopDBConfig extends HikariConfig
 
 
     @Bean(name = "shopEntityManagerFactory")
-    public LocalContainerEntityManagerFactoryBean mawiEntityManagerFactory(EntityManagerFactoryBuilder builder,
+    public LocalContainerEntityManagerFactoryBean shopEntityManagerFactory(EntityManagerFactoryBuilder builder,
                                                                            @Qualifier("shopdb") DataSource dataSource1) {
         HashMap<String, Object> properties = new HashMap<>();
 
@@ -64,9 +64,9 @@ public class ShopDBConfig extends HikariConfig
     }
 
     @Bean(name = "shopTransactionManager")
-    public PlatformTransactionManager mawiTransactionManager(
-            @Qualifier("shopEntityManagerFactory") EntityManagerFactory mawiEntityManagerFactory) {
-        return new JpaTransactionManager(mawiEntityManagerFactory);
+    public PlatformTransactionManager shopTransactionManager(
+            @Qualifier("shopEntityManagerFactory") EntityManagerFactory shopEntityManagerFactory) {
+        return new JpaTransactionManager(shopEntityManagerFactory);
     }
 
     @Bean(name = "shopJdbcTemplate")

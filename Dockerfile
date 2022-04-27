@@ -20,4 +20,3 @@ ADD https://github.com/demogitjava/demodatabase/raw/master/shopdb.mv.db /root/sh
 COPY target/webshop-0.0.1-SNAPSHOT.jar webshop.jar
 
 ENTRYPOINT ["java", "-jar", "webshop.jar"]
-
