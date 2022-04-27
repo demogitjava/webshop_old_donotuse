@@ -12,15 +12,16 @@ import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 
 import java.util.List;
 import java.util.Locale;
-
+import de.jgsoftware.webshop.dao.interfaces.i_daoindex;
 @Repository
-public class DaoIndex
+public class DaoIndex implements i_daoindex
 {
 
     @Autowired
     private JdbcTemplate jtm;
 
 
+    @Override
     public List<Product> getUserProductList()
     {
 
