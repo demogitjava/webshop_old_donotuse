@@ -9,9 +9,10 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import de.jgsoftware.webshop.dao.interfaces.i_daouser;
 
 @Repository
-public class DaoUser
+public class DaoUser implements i_daouser
 {
 
 
@@ -22,6 +23,7 @@ public class DaoUser
 
     public List<Kundenstamm> userlogin;
 
+    @Override
     public Kundenstamm findByEmail(String email)
     {
         String finuserbyemail = new String("finduserbyemail");
@@ -38,18 +40,22 @@ public class DaoUser
         return (Kundenstamm) userlogin;
     }
 
+    @Override
     public Users getUsers() {
         return users;
     }
 
+    @Override
     public void setUsers(Users users) {
         this.users = users;
     }
 
+    @Override
     public List<Kundenstamm> getUserlogin() {
         return userlogin;
     }
 
+    @Override
     public void setUserlogin(List<Kundenstamm> userlogin) {
         this.userlogin = userlogin;
     }
