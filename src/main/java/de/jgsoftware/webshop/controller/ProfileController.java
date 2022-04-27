@@ -6,7 +6,7 @@ import java.util.*;
 
 import de.jgsoftware.webshop.model.Kundenstamm;
 import de.jgsoftware.webshop.model.Users;
-import de.jgsoftware.webshop.service.Index_Service;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.mobile.device.Device;
@@ -15,11 +15,6 @@ import org.springframework.ui.Model;
 import org.springframework.util.LinkedCaseInsensitiveMap;
 import org.springframework.web.bind.annotation.*;
 
-import de.jgsoftware.webshop.dao.DaoProduct;
-
-import de.jgsoftware.webshop.service.User_Service;
-import de.jgsoftware.webshop.service.Product_Service;
-//import de.jgsoftware.webshop.service.User_Product_List_Service;
 
 import de.jgsoftware.webshop.service.interfaces.User_Product_List_Interface;
 
@@ -35,18 +30,20 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.web.servlet.ModelAndView;
 
 import de.jgsoftware.webshop.controller.interfaces.i_ProfileController;
+import de.jgsoftware.webshop.dao.interfaces.i_daoProduct;
+
+import de.jgsoftware.webshop.service.interfaces.i_User_Service;
+import de.jgsoftware.webshop.service.interfaces.i_Product_Service;
+import de.jgsoftware.webshop.service.interfaces.I_Index_Service;
 
 @Controller
 public class ProfileController implements i_ProfileController
 {
-
-
+    @Autowired
+    i_User_Service user_service;
 
     @Autowired
-    User_Service user_service;
-
-    @Autowired
-    DaoProduct dproduct;
+    i_daoProduct dproduct;
 
     List<Kundenstamm> kdstamm;
 
@@ -55,7 +52,7 @@ public class ProfileController implements i_ProfileController
 
 
     @Autowired
-    Product_Service product_service;
+    i_Product_Service product_service;
 
 
     @Autowired
@@ -66,10 +63,8 @@ public class ProfileController implements i_ProfileController
 
 
     @Autowired
-    Index_Service indexservice;
+    I_Index_Service indexservice;
 
-    @Autowired
-    User_Service userService;
 
 
 
