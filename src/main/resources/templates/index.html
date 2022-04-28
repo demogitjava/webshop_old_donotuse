@@ -24,59 +24,82 @@
 
 
 </header>
+
 <body>
+<div sec:authorize="!isAuthenticated()">
+
+	<nav id="navigationbootstrap" class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+		<div class="container">
+			<a class="navbar-brand" href="#" >Simple Demo Webshop page</a> <!-- Company Name -->
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+
+			<div class="collapse navbar-collapse" id="navbarResponsive">
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item active">
+						<a class="nav-link" href="#" >  HOME <!-- Home -->
+							<span class="sr-only">(current)</span>
+						</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/about" >about</a>  <!-- about -->
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/service" >Serivce</a>  <!-- Service -->
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/contact" >contact</a>  <!-- Contact -->
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/login">login</a>  <!-- Login -->
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+</div>
+
+<div sec:authorize="isAuthenticated()">
+
+	<nav id="navigationbootstraplogin" class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+		<div class="container">
+			<a class="navbar-brand" href="#" th:text="${webtextcomp[0].de}"></a> <!-- Company Name -->
+
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+
+			<div class="collapse navbar-collapse" id="navbarResponsivelogin">
+
+				<ul class="navbar-nav ml-auto">
+
+					<li class="nav-item">
+						<a class="nav-link" href="/admin">admin</a>  <!-- admin -->
+					</li>
+
+					<li class="nav-item">
+						<a class="nav-link" href="/lpagewebbuilder/">Webpage Builder</a>  <!-- Webpagebuilder -->
+					</li>
+
+					<li class="nav-item">
+						<a class="nav-link" href="/logout">Logout</a>  <!-- Logout -->
+					</li>
+
+					<li class="nav-item">
+						<a class="nav-link" th:text="${lgusername}" href="/profile"></a>
+					</li>
+
+				</ul>
+			</div>
 
 
-<nav class="navbar navbar-expand-lg bg-dark">
-	<a class="navbar-brand">Your Webshop Name</a>
-	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-		<span class="navbar-toggler-icon"></span>
-	</button>
+		</div>
+	</nav>
 
-	<div class="collapse navbar-collapse" id="navbarSupportedContent">
+</div>
 
-		<ul class="navbar-nav mr-auto">
-			<li class="nav-item"><a class="nav-link"
-									th:href="@{/}"><i class="fa fa-home mr-2"></i>Home</a></li>
-			<li sec:authorize="hasRole('ROLE_ADMIN')" class="nav-item"><a class="nav-link" th:href="@{/admin}">Admin</a></li>
-			<li sec:authorize="hasRole('ROLE_MANAGER')" class="nav-item"><a class="nav-link" th:href="@{/manager}">Management</a></li>
-		</ul>
-
-
-		<ul class="navbar-nav mr-auto text-left">
-
-			<li class="nav-item dropdown">
-				<a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-					Deutsch
-				</a>
-				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-					<a class="dropdown-item" href="/en/">Englisch</a>
-					<a class="dropdown-item" href="/es/">Spanisch</a>
-					<a class="dropdown-item" href="/fr/">Französisch</a>
-					<a class="dropdown-item" href="/it/">Italienisch</a>
-					<a class="dropdown-item" href="/tr/">Türkisch</a>
-
-				</div>
-			</li>
-
-		</ul>
-
-
-		<ul class="nav my-auto mr-4">
-			<li class="nav-item"><a class="text" th:href="@{/profile/cart-product}"><i class="fas fa-shopping-cart"></i></a></li>
-		</ul>
-
-		<form class="form-inline my-2 my-lg-0" form-method="post"
-			  th:action="@{/logout}">
-			<button sec:authorize="isAuthenticated()"
-					class="btn my-2 my-sm-0 btn-sm" type="submit">Logout</button>
-			<button sec:authorize="isAnonymous()" th:href="@{~/login}"
-					class="btn my-2 my-sm-0 btn-sm" type="submit">Login</button>
-
-		</form>
-
-	</div>
-</nav>
 <div class="container-fluid">
 
 
