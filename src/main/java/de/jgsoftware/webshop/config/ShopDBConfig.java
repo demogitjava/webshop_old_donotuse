@@ -67,7 +67,7 @@ public class ShopDBConfig extends HikariConfig
     }
 
     @Bean(name = "shopTransactionManager")
-    public PlatformTransactionManager mawiTransactionManager(
+    public PlatformTransactionManager shopTransactionManager(
             @Qualifier("shopEntityManagerFactory") EntityManagerFactory shopEntityManagerFactory) {
         return new JpaTransactionManager(shopEntityManagerFactory);
     }
