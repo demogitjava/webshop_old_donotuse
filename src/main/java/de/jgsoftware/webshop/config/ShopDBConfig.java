@@ -36,7 +36,7 @@ public class ShopDBConfig extends HikariConfig
 
 
     @Autowired
-    DataSource dataSource1;
+    DataSource dataSource;
 
 
 
@@ -57,26 +57,26 @@ public class ShopDBConfig extends HikariConfig
 
 
     @Bean(name = "shopEntityManagerFactory")
-    public LocalContainerEntityManagerFactoryBean mawiEntityManagerFactory(EntityManagerFactoryBuilder builder,
-                                                                           @Qualifier("shopdb") DataSource dataSource1) {
+    public LocalContainerEntityManagerFactoryBean shopEntityManagerFactory(EntityManagerFactoryBuilder builder,
+                                                                           @Qualifier("shopdb") DataSource dataSource) {
         HashMap<String, Object> properties = new HashMap<>();
 
         properties.put("hibernate.dialect", "org.hibernate.dialect.H2Dialect");
-        return builder.dataSource(dataSource1).properties(properties)
+        return builder.dataSource(dataSource).properties(properties)
                 .packages("de.jgsoftware.webshop.model").persistenceUnit("Shop").build();
     }
 
     @Bean(name = "shopTransactionManager")
     public PlatformTransactionManager mawiTransactionManager(
-            @Qualifier("shopEntityManagerFactory") EntityManagerFactory mawiEntityManagerFactory) {
-        return new JpaTransactionManager(mawiEntityManagerFactory);
+            @Qualifier("shopEntityManagerFactory") EntityManagerFactory shopEntityManagerFactory) {
+        return new JpaTransactionManager(shopEntityManagerFactory);
     }
 
     @Bean(name = "shopJdbcTemplate")
-    public JdbcTemplate jdbcTemplate(@Qualifier("ds3") DataSource dataSource1)
+    public JdbcTemplate jdbcTemplate(@Qualifier("ds3") DataSource dataSource)
     {
 
-        return new JdbcTemplate(dataSource1);
+        return new JdbcTemplate(dataSource);
     }
 
 
