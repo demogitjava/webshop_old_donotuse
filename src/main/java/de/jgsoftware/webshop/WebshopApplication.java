@@ -17,9 +17,4 @@ import java.sql.SQLException;
 @SpringBootApplication
 public class WebshopApplication implements iWebShop
 {
-
-
-
-
-
 }
