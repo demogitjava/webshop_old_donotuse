@@ -61,6 +61,8 @@ public class ProfileController implements i_ProfileController
     @Autowired
     I_Index_Service indexservice;
 
+    Principal principal;
+
     @Override
     public String addToCart(@PathVariable("productId") String productId, Principal principal, Model model)
     {

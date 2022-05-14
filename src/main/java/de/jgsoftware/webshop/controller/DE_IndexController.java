@@ -3,6 +3,7 @@ package de.jgsoftware.webshop.controller;
 
 import de.jgsoftware.webshop.model.Product;
 
+import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.support.PagedListHolder;
 import org.springframework.data.domain.*;
@@ -65,7 +66,7 @@ public class DE_IndexController implements iDE_IndexController
 
     // DE German
     @Override
-    public ModelAndView index(Device device)
+    public ModelAndView index(@NotNull Device device)
     {
         //Locale locale = (Locale) WebUtils.getSessionAttribute(request, LOCALE_SESSION_ATTRIBUTE_NAME);
 

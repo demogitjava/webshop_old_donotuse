@@ -6,8 +6,10 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.security.Principal;
+import org.springframework.security.access.prepost.PreAuthorize;
 
 @RequestMapping("profile")
+@PreAuthorize("hasAuthority('ROLE_ADMIN','ROLE_USER')")
 public interface i_ProfileController
 {
     @GetMapping("addToCart/{productId}")
