@@ -1,6 +1,7 @@
 package de.jgsoftware.webshop.controller.interfaces;
 
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -8,6 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 import java.security.Principal;
 
 @RequestMapping("profile")
+@PreAuthorize("hasAuthority('ROLE_ADMIN','ROLE_USER')")
 public interface i_ProfileController
 {
     @GetMapping("addToCart/{productId}")

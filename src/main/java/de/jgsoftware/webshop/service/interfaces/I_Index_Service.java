@@ -4,10 +4,6 @@ import de.jgsoftware.webshop.dao.DaoIndex;
 import de.jgsoftware.webshop.dao.DaoProduct;
 import de.jgsoftware.webshop.model.Product;
 import org.springframework.beans.support.PagedListHolder;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 

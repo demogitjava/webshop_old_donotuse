@@ -3,7 +3,6 @@ package de.jgsoftware.webshop.dao;
 import de.jgsoftware.webshop.dao.interfaces.i_daoProduct;
 import de.jgsoftware.webshop.model.Product;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;

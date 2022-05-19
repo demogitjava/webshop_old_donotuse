@@ -1,6 +1,7 @@
 package de.jgsoftware.webshop.dao;
 
 
+import de.jgsoftware.webshop.dao.interfaces.i_daouser;
 import de.jgsoftware.webshop.model.Kundenstamm;
 import de.jgsoftware.webshop.model.Users;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +10,6 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-import de.jgsoftware.webshop.dao.interfaces.i_daouser;
 
 @Repository
 public class DaoUser implements i_daouser

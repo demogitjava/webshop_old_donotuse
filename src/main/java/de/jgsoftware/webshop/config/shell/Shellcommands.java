@@ -1,28 +1,16 @@
 package de.jgsoftware.webshop.config.shell;
 
 
-
-
-import org.apache.commons.compress.archivers.ArchiveOutputStream;
-import org.apache.commons.compress.archivers.tar.TarArchiveOutputStream;
-import org.apache.commons.compress.archivers.zip.ZipArchiveEntry;
-import org.apache.commons.compress.archivers.zip.ZipArchiveInputStream;
-import org.apache.commons.compress.compressors.gzip.GzipCompressorOutputStream;
-import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.IOUtils;
-import org.springframework.jmx.support.RegistrationPolicy;
 import org.springframework.shell.standard.ShellComponent;
 import org.springframework.shell.standard.ShellMethod;
-import java.net.*;
-import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.nio.file.StandardCopyOption;
-import java.util.Enumeration;
-import java.util.List;
-import java.util.zip.*;
 
-import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
+import java.io.*;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.nio.file.Files;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipInputStream;
+
 import static org.hibernate.engine.jdbc.StreamUtils.copy;
 
 @ShellComponent

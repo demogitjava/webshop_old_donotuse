@@ -1,13 +1,7 @@
 package de.jgsoftware.webshop.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
-
 import javax.persistence.*;
-import javax.security.auth.Subject;
 import java.sql.Timestamp;
-import java.util.*;
-import javax.persistence.Id;
 
 @Entity
 @Table(name = "KUNDENSTAMM", schema = "PUBLIC", catalog = "SHOPDB")

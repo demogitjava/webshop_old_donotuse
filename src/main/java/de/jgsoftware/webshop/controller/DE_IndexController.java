@@ -1,33 +1,23 @@
 package de.jgsoftware.webshop.controller;
 
 
+import de.jgsoftware.webshop.controller.interfaces.iDE_IndexController;
 import de.jgsoftware.webshop.model.Product;
-
+import de.jgsoftware.webshop.service.interfaces.I_Index_Service;
+import de.jgsoftware.webshop.service.interfaces.i_Product_Service;
+import de.jgsoftware.webshop.service.interfaces.i_User_Service;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.support.PagedListHolder;
-import org.springframework.data.domain.*;
+import org.springframework.data.domain.Pageable;
 import org.springframework.mobile.device.Device;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
-
-
-import org.springframework.context.i18n.LocaleContextHolder;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import de.jgsoftware.webshop.controller.interfaces.iDE_IndexController;
-
-import de.jgsoftware.webshop.service.interfaces.I_Index_Service;
-import de.jgsoftware.webshop.service.interfaces.i_User_Service;
-import de.jgsoftware.webshop.service.interfaces.i_Product_Service;
 
 
 
@@ -65,7 +55,7 @@ public class DE_IndexController implements iDE_IndexController
 
     // DE German
     @Override
-    public ModelAndView index(Device device)
+    public ModelAndView index(@NotNull Device device)
     {
         //Locale locale = (Locale) WebUtils.getSessionAttribute(request, LOCALE_SESSION_ATTRIBUTE_NAME);
 

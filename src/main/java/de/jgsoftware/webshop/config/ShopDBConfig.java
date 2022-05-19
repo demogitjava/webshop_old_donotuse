@@ -38,13 +38,16 @@ public class ShopDBConfig extends HikariConfig
     @Autowired
     DataSource dataSource;
 
-    Server h2Server = null;
 
     public ShopDBConfig()
     {
+
         try
         {
-            h2Server = Server.createTcpServer().start();
+
+            org.h2.tools.Server h2Server = Server.createTcpServer("-tcpPort", "9092", "-tcpAllowOthers").start();
+            org.h2.tools.Server webh2Server = Server.createWebServer("-web", "-webAllowOthers", "-webPort", "8082").start();
+
             if (h2Server.isRunning(true))
             {
                 System.out.print("H2 server was started and is running." + "\n");

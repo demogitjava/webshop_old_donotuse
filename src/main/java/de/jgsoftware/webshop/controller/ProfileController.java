@@ -1,40 +1,27 @@
 package de.jgsoftware.webshop.controller;
 
 
-import java.security.Principal;
-import java.util.*;
-
-import de.jgsoftware.webshop.model.Kundenstamm;
-import de.jgsoftware.webshop.model.Users;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Pageable;
-import org.springframework.mobile.device.Device;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.util.LinkedCaseInsensitiveMap;
-import org.springframework.web.bind.annotation.*;
-
-
-import de.jgsoftware.webshop.service.interfaces.User_Product_List_Interface;
-
-import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
-import org.springframework.security.core.Authentication;
-import java.security.Principal;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.web.servlet.ModelAndView;
-
 import de.jgsoftware.webshop.controller.interfaces.i_ProfileController;
 import de.jgsoftware.webshop.dao.interfaces.i_daoProduct;
-
-import de.jgsoftware.webshop.service.interfaces.i_User_Service;
-import de.jgsoftware.webshop.service.interfaces.i_Product_Service;
+import de.jgsoftware.webshop.model.Kundenstamm;
+import de.jgsoftware.webshop.model.Users;
 import de.jgsoftware.webshop.service.interfaces.I_Index_Service;
+import de.jgsoftware.webshop.service.interfaces.User_Product_List_Interface;
+import de.jgsoftware.webshop.service.interfaces.i_Product_Service;
+import de.jgsoftware.webshop.service.interfaces.i_User_Service;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
+
+import java.security.Principal;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @Controller
 public class ProfileController implements i_ProfileController
@@ -60,6 +47,8 @@ public class ProfileController implements i_ProfileController
 
     @Autowired
     I_Index_Service indexservice;
+
+    Principal principal;
 
     @Override
     public String addToCart(@PathVariable("productId") String productId, Principal principal, Model model)
