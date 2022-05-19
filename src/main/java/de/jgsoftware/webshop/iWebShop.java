@@ -11,7 +11,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public interface iWebShop
 {
 
-
     public static void main(String[] args)
     {
         SpringApplication.run(WebshopApplication.class, args);
