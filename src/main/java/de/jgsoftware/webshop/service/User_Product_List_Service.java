@@ -2,13 +2,12 @@ package de.jgsoftware.webshop.service;
 
 
 import de.jgsoftware.webshop.dao.Dao_UserProductList;
-
 import de.jgsoftware.webshop.service.interfaces.User_Product_List_Interface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.LinkedCaseInsensitiveMap;
 
-import java.util.*;
+import java.util.List;
 
 @Service
 public class User_Product_List_Service implements User_Product_List_Interface

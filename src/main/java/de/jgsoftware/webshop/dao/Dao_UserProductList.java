@@ -1,23 +1,19 @@
 package de.jgsoftware.webshop.dao;
 
 
+import de.jgsoftware.webshop.dao.interfaces.i_dao_userproductlist;
 import de.jgsoftware.webshop.model.Kundenstamm;
-import de.jgsoftware.webshop.model.PRODUCT_CHECK_OUT_TEXT;
 import de.jgsoftware.webshop.model.USER_PRODUCT_LIST;
-
 import de.jgsoftware.webshop.model.Users;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import javax.management.Query;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
 import java.util.Map;
-
-import de.jgsoftware.webshop.dao.interfaces.i_dao_userproductlist;
 
 @Repository
 public class Dao_UserProductList implements i_dao_userproductlist

@@ -1,17 +1,12 @@
 package de.jgsoftware.webshop.service;
 
-import de.jgsoftware.webshop.controller.DE_IndexController;
 import de.jgsoftware.webshop.dao.DaoIndex;
 import de.jgsoftware.webshop.dao.DaoProduct;
 import de.jgsoftware.webshop.model.Product;
 import de.jgsoftware.webshop.service.interfaces.I_Index_Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.support.PagedListHolder;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
-import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

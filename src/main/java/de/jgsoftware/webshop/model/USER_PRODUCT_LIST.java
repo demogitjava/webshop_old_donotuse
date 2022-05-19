@@ -2,11 +2,6 @@ package de.jgsoftware.webshop.model;
 
 
 import javax.persistence.*;
-import javax.persistence.Id;
-
-import java.util.Collection;
-import java.util.List;
-import java.util.Set;
 
 @Entity
 @Table(name = "USER_PRODUCT_LIST", schema = "PUBLIC", catalog = "SHOPDB")
